@@ -25,6 +25,9 @@ SECRET_KEY = '66lozakpb(qth)h@&g^x=-e(u9-rh^8&x_c@sw*x=o=0a4u1!='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# AUTH_USER_MODEL = 'LibraryManagement.User'
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/LibraryManagement/'
+
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'LibraryManagement.apps.LibrarymanagementConfig',
 ]
 
 MIDDLEWARE = [

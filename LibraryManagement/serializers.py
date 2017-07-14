@@ -8,7 +8,15 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Books
         fields = ('id', 'name',
-                  'isbn', 'author', 'no_of_copies_available')
+                  'isbn', 'author', 'copies_available')
+
+
+class BookIssueRecordSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BookIssueRecord
+        fields = ('id', 'borrower', 'book', 'issuer',
+                  'issue_date', 'due_date', 'return_date', 'fine_amount')
 
 
 class BorrowerSerializer(serializers.ModelSerializer):
@@ -18,7 +26,7 @@ class BorrowerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Borrower
-        fields = ('id', 'username', 'password', 'address', 'record')
+        fields = ('id', 'name', 'address', 'record')
 
 
 class LibrarianSerializer(serializers.ModelSerializer):
@@ -28,12 +36,4 @@ class LibrarianSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Librarian
-        fields = ('id', 'username', 'password', 'address', 'record')
-
-
-class BookIssueRecordSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = BookIssueRecord
-        fields = ('id', 'borrower', 'book', 'issuer',
-                  'issue_date', 'due_date', 'return_date', 'fine_amount')
+        fields = ('id', 'name', 'address', 'record')
