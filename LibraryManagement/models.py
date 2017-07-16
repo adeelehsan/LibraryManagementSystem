@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from datetime import date
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -24,24 +25,23 @@ class Borrower(models.Model):
     """
         An Borrower class - to describe book borrower in the system.
     """
-    # user = models.OneToOneRel(User)
-    name = models.CharField(max_length=200)
+    user = models.OneToOneField(User, unique=True)
     address = models.CharField(max_length=200)
-    # subscription_end_date = models.DateField()
+    subscription_end_date = models.DateField(default=date(2018, 12, 30))
 
     def __str__(self):
-        return self.name
+        return self.user.username
 
 
 class Librarian(models.Model):
     """
         An Librarian class - to describe librarian in the system.
     """
-    name = models.CharField(max_length=200)
+    user = models.OneToOneField(User, unique=True)
     address = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name
+        return self.user.username
 
 
 class BookIssueRecord(models.Model):

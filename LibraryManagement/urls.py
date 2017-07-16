@@ -5,8 +5,8 @@ from rest_framework.routers import DefaultRouter
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
 router.register(r'books', views.BookViewSet)
-router.register(r'borrower', views.BorrowerViewSet)
-router.register(r'librarian', views.LibrarianViewSet)
+router.register(r'borrower', views.BorrowerViewSet, base_name='borrower')
+router.register(r'librarian', views.LibrarianViewSet, base_name='librarian')
 router.register(r'borrowbook', views.BookIssueRecordViewSet)
 
 # The API URLs are now determined automatically by the router.
